@@ -1,0 +1,282 @@
+{% stylesheet %}
+  .product-comparison {
+    padding: 3rem 2rem;
+    background-color: white;
+  }
+
+  .product-comparison-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .comparison-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .comparison-header h2 {
+    font-size: 2.2rem;
+    color: #2D2D2D;
+    margin-bottom: 0.5rem;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(45, 45, 45, 0.08);
+  }
+
+  .comparison-table thead {
+    background-color: #F7F3EE;
+  }
+
+  .comparison-table th {
+    padding: 1.5rem;
+    text-align: center;
+    color: #2D2D2D;
+    font-weight: 600;
+    border-bottom: 2px solid #DCCCB8;
+  }
+
+  .comparison-table td {
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #DCCCB8;
+    color: #6F6A63;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .feature-name {
+    text-align: left;
+    font-weight: 500;
+    color: #2D2D2D;
+  }
+
+  .feature-yes {
+    color: #C98F75;
+    font-weight: 600;
+  }
+
+  .feature-no {
+    color: #6F6A63;
+  }
+
+  .comparison-badge {
+    display: inline-block;
+    background-color: #C98F75;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .comparison-table {
+      font-size: 0.85rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem;
+    }
+    
+    .comparison-header h2 {
+      font-size: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+<section class="product-comparison">
+  <div class="product-comparison-container">
+    <div class="comparison-header">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Caractéristiques</th>
+          <th>{{ section.settings.product_1_name }}</th>
+          <th>{{ section.settings.product_2_name }}</th>
+          <th>{{ section.settings.product_3_name }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in (1..5) %}
+          <tr>
+            <td class="feature-name">{{ section.settings["feature_" | append: i | append: "_name"] }}</td>
+            <td>{% if section.settings["feature_" | append: i | append: "_p1"] %}✓ {{ section.settings["feature_" | append: i | append: "_p1"] }}{% else %}—{% endif %}</td>
+            <td>{% if section.settings["feature_" | append: i | append: "_p2"] %}✓ {{ section.settings["feature_" | append: i | append: "_p2"] }}{% else %}—{% endif %}</td>
+            <td>{% if section.settings["feature_" | append: i | append: "_p3"] %}✓ {{ section.settings["feature_" | append: i | append: "_p3"] }}{% else %}—{% endif %}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparaison Produits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Comparaison de Nos Produits Phares"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Trouvez le produit parfait pour vos besoins"
+    },
+    {
+      "type": "text",
+      "id": "product_1_name",
+      "label": "Nom Produit 1",
+      "default": "Produit A"
+    },
+    {
+      "type": "text",
+      "id": "product_2_name",
+      "label": "Nom Produit 2",
+      "default": "Produit B"
+    },
+    {
+      "type": "text",
+      "id": "product_3_name",
+      "label": "Nom Produit 3",
+      "default": "Produit C"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_name",
+      "label": "Caractéristique 1",
+      "default": "Matière Première"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_p1",
+      "label": "Détail Produit 1",
+      "default": "Coton Bio 100%"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_p2",
+      "label": "Détail Produit 2",
+      "default": "Bambou Organique"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_p3",
+      "label": "Détail Produit 3",
+      "default": "Laine Mérinos"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_name",
+      "label": "Caractéristique 2",
+      "default": "Hypoallergénique"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_p1",
+      "label": "Détail Produit 1",
+      "default": "Oui"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_p2",
+      "label": "Détail Produit 2",
+      "default": "Oui"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_p3",
+      "label": "Détail Produit 3",
+      "default": "Oui"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_name",
+      "label": "Caractéristique 3",
+      "default": "Durable"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_p1",
+      "label": "Détail Produit 1",
+      "default": "5+ ans"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_p2",
+      "label": "Détail Produit 2",
+      "default": "3+ ans"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_p3",
+      "label": "Détail Produit 3",
+      "default": "2+ ans"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_name",
+      "label": "Caractéristique 4",
+      "default": "Certification"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_p1",
+      "label": "Détail Produit 1",
+      "default": "GOTS"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_p2",
+      "label": "Détail Produit 2",
+      "default": "OEKO-TEX"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_p3",
+      "label": "Détail Produit 3",
+      "default": "FSC"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_name",
+      "label": "Caractéristique 5",
+      "default": "Prix"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_p1",
+      "label": "Détail Produit 1",
+      "default": "€€"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_p2",
+      "label": "Détail Produit 2",
+      "default": "€€€"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_p3",
+      "label": "Détail Produit 3",
+      "default": "€"
+    }
+  ]
+}
+{% endschema %}

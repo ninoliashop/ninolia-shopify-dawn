@@ -1,0 +1,167 @@
+{% stylesheet %}
+  .faq {
+    padding: 4rem 2rem;
+    background-color: #F7F3EE;
+  }
+
+  .faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .faq-header h1 {
+    font-size: 2.5rem;
+    color: #2D2D2D;
+    margin-bottom: 1rem;
+  }
+
+  .faq-header p {
+    font-size: 1.05rem;
+    color: #6F6A63;
+  }
+
+  .faq-item {
+    background-color: white;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(45, 45, 45, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .faq-question {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #2D2D2D;
+    font-size: 1.05rem;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .faq-question:hover {
+    background-color: #F7F3EE;
+  }
+
+  .faq-question.active {
+    background-color: #DCCCB8;
+    color: #2D2D2D;
+  }
+
+  .faq-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-question.active .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-answer.active {
+    max-height: 500px;
+  }
+
+  .faq-answer-content {
+    padding: 0 1.5rem 1.5rem;
+    color: #6F6A63;
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .faq-header h1 {
+      font-size: 1.8rem;
+    }
+
+    .faq-question {
+      font-size: 0.95rem;
+      padding: 1.25rem;
+    }
+  }
+{% endstylesheet %}
+
+<section class="faq">
+  <div class="faq-container">
+    <div class="faq-header">
+      <h1>{{ page.title }}</h1>
+      <p>Trouvez réponses à vos questions les plus fréquentes</p>
+    </div>
+
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        {% if block.type == "faq_item" %}
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              <span>{{ block.settings.question }}</span>
+              <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFAQ(element) {
+    const question = element;
+    const answer = element.nextElementSibling;
+    
+    // Fermer tous les autres
+    document.querySelectorAll('.faq-question.active').forEach(q => {
+      if (q !== question) {
+        q.classList.remove('active');
+        q.nextElementSibling.classList.remove('active');
+      }
+    });
+    
+    // Toggle le courant
+    question.classList.toggle('active');
+    answer.classList.toggle('active');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Élément FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Quelle est votre politique de retour?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "Vous avez 30 jours après votre achat pour retourner les produits en bon état. Aucune question posée, remboursement complet garanti."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

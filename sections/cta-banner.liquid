@@ -1,0 +1,137 @@
+{% stylesheet %}
+  .cta-banner {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #DCCCB8 0%, #C98F75 100%);
+    text-align: center;
+  }
+
+  .cta-banner-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cta-banner h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-banner p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-banner-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-btn-primary {
+    padding: 14px 36px;
+    background-color: white;
+    color: #C98F75;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .cta-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-btn-secondary {
+    padding: 14px 36px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .cta-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .cta-banner-buttons {
+      flex-direction: column;
+    }
+    
+    .cta-banner h2 {
+      font-size: 1.5rem;
+    }
+    
+    .cta-btn-primary,
+    .cta-btn-secondary {
+      width: 100%;
+    }
+  }
+{% endstylesheet %}
+
+<section class="cta-banner">
+  <div class="cta-banner-container">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.description }}</p>
+    <div class="cta-banner-buttons">
+      <button class="cta-btn-primary" onclick="window.location.href='{{ section.settings.primary_button_link }}'">
+        {{ section.settings.primary_button_text }}
+      </button>
+      <button class="cta-btn-secondary" onclick="window.location.href='{{ section.settings.secondary_button_link }}'">
+        {{ section.settings.secondary_button_text }}
+      </button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Prêt à Découvrir Ninolia?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Rejoignez des milliers de parents qui ont choisi Ninolia pour le bien-être de leur bébé."
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Texte Bouton Primaire",
+      "default": "Acheter Maintenant"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Lien Bouton Primaire"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Texte Bouton Secondaire",
+      "default": "En Savoir Plus"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Lien Bouton Secondaire"
+    }
+  ]
+}
+{% endschema %}

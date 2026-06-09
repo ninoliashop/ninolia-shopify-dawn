@@ -1,0 +1,177 @@
+{% stylesheet %}
+  .related-products {
+    padding: 3rem 2rem;
+    background-color: #F7F3EE;
+  }
+
+  .related-products-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .related-products-header {
+    margin-bottom: 2rem;
+  }
+
+  .related-products-header h2 {
+    font-size: 1.8rem;
+    color: #2D2D2D;
+    margin-bottom: 0.5rem;
+  }
+
+  .related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(45, 45, 45, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .related-product-card:hover {
+    box-shadow: 0 8px 24px rgba(45, 45, 45, 0.15);
+    transform: translateY(-6px);
+  }
+
+  .related-product-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background-color: #DCCCB8;
+  }
+
+  .related-product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .related-product-card:hover .related-product-image img {
+    transform: scale(1.05);
+  }
+
+  .related-product-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #C98F75;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .related-product-info {
+    padding: 1rem;
+  }
+
+  .related-product-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2D2D2D;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .related-product-price {
+    font-size: 1rem;
+    color: #C98F75;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .related-product-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #DCCCB8;
+    color: #2D2D2D;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .related-product-btn:hover {
+    background-color: #C98F75;
+    color: white;
+  }
+
+  @media (max-width: 1024px) {
+    .related-products-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .related-products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .related-products-header h2 {
+      font-size: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+<section class="related-products">
+  <div class="related-products-container">
+    <div class="related-products-header">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    
+    <div class="related-products-grid">
+      {% for product in collections[section.settings.collection].products limit: 4 %}
+        <div class="related-product-card">
+          <div class="related-product-image">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 350 }}" alt="{{ product.title }}" />
+            {% endif %}
+            {% if product.compare_at_price > product.price %}
+              <span class="related-product-badge">-{{ ((product.compare_at_price | minus: product.price) | times: 100 | divided_by: product.compare_at_price) | floor }}%</span>
+            {% endif %}
+          </div>
+          <div class="related-product-info">
+            <h3 class="related-product-title">{{ product.title }}</h3>
+            <p class="related-product-price">{{ product.price | money }}</p>
+            <a href="{{ product.url }}" class="related-product-btn">Voir Détails</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Produits Similaires",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Vous Aimerez Aussi"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection à Afficher"
+    }
+  ]
+}
+{% endschema %}
