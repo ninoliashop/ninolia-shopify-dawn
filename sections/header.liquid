@@ -1,0 +1,28 @@
+<!-- Navigation -->
+<style>
+  header {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2D2D2D;
+  }
+</style>
+
+<header>
+  <div style="max-width: 1200px; margin: 0 auto; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+    <a href="/" class="logo">{{ shop.name }}</a>
+    <nav>
+      <a href="/collections/all" style="margin: 0 1.5rem; color: #2D2D2D;">Collections</a>
+      <a href="/pages/about" style="margin: 0 1.5rem; color: #2D2D2D;">À Propos</a>
+      <a href="/contact" style="margin: 0 1.5rem; color: #2D2D2D;">Contact</a>
+    </nav>
+    <a href="/cart" style="color: #C98F75; font-weight: 600;">Panier</a>
+  </div>
+</header>

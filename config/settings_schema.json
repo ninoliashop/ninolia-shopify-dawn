@@ -1,5 +1,39 @@
 [
   {
+    "type": "hero",
+    "name": "Hero Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "Titre Principal",
+        "default": "Bienvenue chez Ninolia"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_subtitle",
+        "label": "Sous-titre",
+        "default": "Des produits premium pour les bébés et les mamans qui cherchent l'excellence"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Texte du Bouton",
+        "default": "Découvrir la Collection"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Lien du Bouton"
+      },
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Image Hero"
+      }
+    ]
+  },
+  {
     "name": "Palette Ninolia",
     "settings": [
       {
@@ -35,27 +69,6 @@
         "id": "color_muted",
         "label": "Couleur Muted (Gris)",
         "default": "#6F6A63"
-      }
-    ]
-  },
-  {
-    "name": "Typographie",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Paramètres de Typographie"
-      },
-      {
-        "type": "font_picker",
-        "id": "font_heading",
-        "label": "Police des Titres",
-        "default": "poppins_n6"
-      },
-      {
-        "type": "font_picker",
-        "id": "font_body",
-        "label": "Police du Corps",
-        "default": "poppins_n4"
       }
     ]
   }

@@ -59,92 +59,31 @@
 
 <section class="trust-badges">
   <div class="trust-container">
-    {% for i in (1..4) %}
-      <div class="badge">
-        <div class="badge-icon">{{ section.settings["icon_" | append: i] }}</div>
-        <h3>{{ section.settings["badge_title_" | append: i] }}</h3>
-        <p>{{ section.settings["badge_text_" | append: i] }}</p>
-      </div>
-    {% endfor %}
+    <div class="badge">
+      <div class="badge-icon">✓</div>
+      <h3>Produits Testés</h3>
+      <p>Testé et approuvé par des pédiatres</p>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🌿</div>
+      <h3>Bio & Naturel</h3>
+      <p>Matières premières certifiées organiques</p>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🚚</div>
+      <h3>Livraison Rapide</h3>
+      <p>Expédition en 24-48h</p>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">❤️</div>
+      <h3>Satisfait ou Remboursé</h3>
+      <p>Garantie 30 jours sans questions</p>
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Bandeau de Confiance",
-  "settings": [
-    {
-      "type": "text",
-      "id": "icon_1",
-      "label": "Icône 1",
-      "default": "✓"
-    },
-    {
-      "type": "text",
-      "id": "badge_title_1",
-      "label": "Titre 1",
-      "default": "Produits Testés"
-    },
-    {
-      "type": "text",
-      "id": "badge_text_1",
-      "label": "Texte 1",
-      "default": "Testé et approuvé par des pédiatres"
-    },
-    {
-      "type": "text",
-      "id": "icon_2",
-      "label": "Icône 2",
-      "default": "🌿"
-    },
-    {
-      "type": "text",
-      "id": "badge_title_2",
-      "label": "Titre 2",
-      "default": "Bio & Naturel"
-    },
-    {
-      "type": "text",
-      "id": "badge_text_2",
-      "label": "Texte 2",
-      "default": "Matières premières certifiées organiques"
-    },
-    {
-      "type": "text",
-      "id": "icon_3",
-      "label": "Icône 3",
-      "default": "🚚"
-    },
-    {
-      "type": "text",
-      "id": "badge_title_3",
-      "label": "Titre 3",
-      "default": "Livraison Rapide"
-    },
-    {
-      "type": "text",
-      "id": "badge_text_3",
-      "label": "Texte 3",
-      "default": "Expédition en 24-48h"
-    },
-    {
-      "type": "text",
-      "id": "icon_4",
-      "label": "Icône 4",
-      "default": "❤️"
-    },
-    {
-      "type": "text",
-      "id": "badge_title_4",
-      "label": "Titre 4",
-      "default": "Satisfait ou Remboursé"
-    },
-    {
-      "type": "text",
-      "id": "badge_text_4",
-      "label": "Texte 4",
-      "default": "Garantie 30 jours sans questions"
-    }
-  ]
+  "name": "Bandeau de Confiance"
 }
 {% endschema %}

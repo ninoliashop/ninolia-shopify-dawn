@@ -62,20 +62,6 @@
     gap: 1rem;
   }
 
-  .author-avatar-slider {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #DCCCB8;
-    overflow: hidden;
-  }
-
-  .author-avatar-slider img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .author-info-slider h4 {
     font-size: 1.05rem;
     color: #2D2D2D;
@@ -142,24 +128,41 @@
 <section class="testimonials-slider">
   <div class="testimonials-slider-container">
     <div class="testimonials-slider-header">
-      <h2>{{ section.settings.title }}</h2>
+      <h2>Ce que nos clients disent</h2>
     </div>
 
     <div class="slider-wrapper">
       <div class="slider" id="testimonialSlider">
-        {% for i in (1..3) %}
-          <div class="slide">
-            <div class="slide-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
-            <p class="slide-text">"{{ section.settings["testimonial_text_" | append: i] }}"</p>
-            <div class="slide-author">
-              <div class="author-avatar-slider"></div>
-              <div class="author-info-slider">
-                <h4>{{ section.settings["author_name_" | append: i] }}</h4>
-                <p>{{ section.settings["author_title_" | append: i] }}</p>
-              </div>
+        <div class="slide">
+          <div class="slide-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+          <p class="slide-text">"Les produits Ninolia ont changé ma vie de maman. Qualité exceptionnelle et livraison rapide!"</p>
+          <div class="slide-author">
+            <div class="author-info-slider">
+              <h4>Sophie M.</h4>
+              <p>Maman de 2 enfants</p>
             </div>
           </div>
-        {% endfor %}
+        </div>
+        <div class="slide">
+          <div class="slide-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+          <p class="slide-text">"Pédiatre recommandé! Mes patients adorent les produits Ninolia pour leur douceur et leur innocuité."</p>
+          <div class="slide-author">
+            <div class="author-info-slider">
+              <h4>Dr. Claire L.</h4>
+              <p>Pédiatre</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+          <p class="slide-text">"Enfin une marque qui comprend vraiment les besoins des bébés. Merci Ninolia pour votre engagement!"</p>
+          <div class="slide-author">
+            <div class="author-info-slider">
+              <h4>Marie D.</h4>
+              <p>Maman</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -194,7 +197,6 @@
     });
   }
 
-  // Créer les dots
   function createDots() {
     const dotsContainer = document.getElementById('dots');
     for (let i = 0; i < totalSlides; i++) {
@@ -210,75 +212,11 @@
   }
 
   createDots();
-  
-  // Auto-rotation tous les 5 secondes
   setInterval(() => moveSlider(1), 5000);
 </script>
 
 {% schema %}
 {
-  "name": "Testimonials Slider",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Histoires Inspirantes de Nos Clients"
-    },
-    {
-      "type": "textarea",
-      "id": "testimonial_text_1",
-      "label": "Témoignage 1",
-      "default": "Les produits Ninolia ont transformé nos routines de soins. Mon bébé adore et sa peau n'a jamais été aussi belle!"
-    },
-    {
-      "type": "text",
-      "id": "author_name_1",
-      "label": "Nom Auteur 1",
-      "default": "Claire & Lucas"
-    },
-    {
-      "type": "text",
-      "id": "author_title_1",
-      "label": "Titre Auteur 1",
-      "default": "Parents depuis 2 ans"
-    },
-    {
-      "type": "textarea",
-      "id": "testimonial_text_2",
-      "label": "Témoignage 2",
-      "default": "Qualité exceptionnelle et livraison rapide. C'est mon premier choix pour tous mes achats bébé maintenant!"
-    },
-    {
-      "type": "text",
-      "id": "author_name_2",
-      "label": "Nom Auteur 2",
-      "default": "Mariana S."
-    },
-    {
-      "type": "text",
-      "id": "author_title_2",
-      "label": "Titre Auteur 2",
-      "default": "Cliente fidèle"
-    },
-    {
-      "type": "textarea",
-      "id": "testimonial_text_3",
-      "label": "Témoignage 3",
-      "default": "Enfin une marque qui comprend vraiment ce que cherchent les parents responsables. Bravo Ninolia!"
-    },
-    {
-      "type": "text",
-      "id": "author_name_3",
-      "label": "Nom Auteur 3",
-      "default": "Sophie L."
-    },
-    {
-      "type": "text",
-      "id": "author_title_3",
-      "label": "Titre Auteur 3",
-      "default": "Maman de 3 enfants"
-    }
-  ]
+  "name": "Testimonials Slider"
 }
 {% endschema %}

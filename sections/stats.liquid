@@ -70,113 +70,42 @@
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-    
-    .stats-header h2 {
-      font-size: 1.8rem;
-    }
   }
 {% endstylesheet %}
 
 <section class="stats">
   <div class="stats-container">
     <div class="stats-header">
-      <h2>{{ section.settings.title }}</h2>
+      <h2>Les Chiffres de Ninolia</h2>
     </div>
     
     <div class="stats-grid">
-      {% for i in (1..4) %}
-        <div class="stat-item">
-          <div class="stat-number">{{ section.settings["stat_number_" | append: i] }}</div>
-          <div class="stat-label">{{ section.settings["stat_label_" | append: i] }}</div>
-          <div class="stat-description">{{ section.settings["stat_description_" | append: i] }}</div>
-        </div>
-      {% endfor %}
+      <div class="stat-item">
+        <div class="stat-number">50K+</div>
+        <div class="stat-label">Clients Satisfaits</div>
+        <div class="stat-description">Familles qui nous font confiance</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Taux de Satisfaction</div>
+        <div class="stat-description">Avis clients vérifiés</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24h</div>
+        <div class="stat-label">Traitement Commande</div>
+        <div class="stat-description">Expédition rapide en France</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Bio & Certifié</div>
+        <div class="stat-description">Produits testés dermatologiquement</div>
+      </div>
     </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Section Statistiques",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Les Chiffres de Ninolia"
-    },
-    {
-      "type": "text",
-      "id": "stat_number_1",
-      "label": "Nombre Stat 1",
-      "default": "50K+"
-    },
-    {
-      "type": "text",
-      "id": "stat_label_1",
-      "label": "Label Stat 1",
-      "default": "Clients Satisfaits"
-    },
-    {
-      "type": "text",
-      "id": "stat_description_1",
-      "label": "Description Stat 1",
-      "default": "Familles qui nous font confiance"
-    },
-    {
-      "type": "text",
-      "id": "stat_number_2",
-      "label": "Nombre Stat 2",
-      "default": "98%"
-    },
-    {
-      "type": "text",
-      "id": "stat_label_2",
-      "label": "Label Stat 2",
-      "default": "Taux de Satisfaction"
-    },
-    {
-      "type": "text",
-      "id": "stat_description_2",
-      "label": "Description Stat 2",
-      "default": "Avis clients vérifiés"
-    },
-    {
-      "type": "text",
-      "id": "stat_number_3",
-      "label": "Nombre Stat 3",
-      "default": "24h"
-    },
-    {
-      "type": "text",
-      "id": "stat_label_3",
-      "label": "Label Stat 3",
-      "default": "Traitement Commande"
-    },
-    {
-      "type": "text",
-      "id": "stat_description_3",
-      "label": "Description Stat 3",
-      "default": "Expédition rapide en France"
-    },
-    {
-      "type": "text",
-      "id": "stat_number_4",
-      "label": "Nombre Stat 4",
-      "default": "100%"
-    },
-    {
-      "type": "text",
-      "id": "stat_label_4",
-      "label": "Label Stat 4",
-      "default": "Bio & Certifié"
-    },
-    {
-      "type": "text",
-      "id": "stat_description_4",
-      "label": "Description Stat 4",
-      "default": "Produits testés dermatologiquement"
-    }
-  ]
+  "name": "Section Statistiques"
 }
 {% endschema %}

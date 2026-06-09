@@ -71,85 +71,31 @@
 <section class="benefits">
   <div class="benefits-container">
     <div class="benefits-header">
-      <h2>{{ section.settings.title }}</h2>
+      <h2>Pourquoi Choisir Ninolia ?</h2>
     </div>
     
     <div class="benefits-grid">
-      {% for i in (1..3) %}
-        <div class="benefit-item">
-          <div class="benefit-icon">{{ section.settings["benefit_icon_" | append: i] }}</div>
-          <h3>{{ section.settings["benefit_title_" | append: i] }}</h3>
-          <p>{{ section.settings["benefit_text_" | append: i] }}</p>
-        </div>
-      {% endfor %}
+      <div class="benefit-item">
+        <div class="benefit-icon">👶</div>
+        <h3>Pour les Bébés</h3>
+        <p>Tous nos produits sont doux, hypoallergéniques et testés dermatologiquement pour la peau sensible de votre bébé.</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💚</div>
+        <h3>Pour les Mamans</h3>
+        <p>Des produits conçus pour le bien-être et la sérénité des mères modernes et conscientes.</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🌍</div>
+        <h3>Responsable & Durable</h3>
+        <p>Emballages éco-responsables et production éthique pour un avenir meilleur pour nos enfants.</p>
+      </div>
     </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Pourquoi Choisir Ninolia",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre Principal",
-      "default": "Pourquoi Choisir Ninolia ?"
-    },
-    {
-      "type": "text",
-      "id": "benefit_icon_1",
-      "label": "Icône Bénéfice 1",
-      "default": "👶"
-    },
-    {
-      "type": "text",
-      "id": "benefit_title_1",
-      "label": "Titre Bénéfice 1",
-      "default": "Pour les Bébés"
-    },
-    {
-      "type": "textarea",
-      "id": "benefit_text_1",
-      "label": "Texte Bénéfice 1",
-      "default": "Tous nos produits sont doux, hypoallergéniques et testés dermatologiquement pour la peau sensible de votre bébé."
-    },
-    {
-      "type": "text",
-      "id": "benefit_icon_2",
-      "label": "Icône Bénéfice 2",
-      "default": "💚"
-    },
-    {
-      "type": "text",
-      "id": "benefit_title_2",
-      "label": "Titre Bénéfice 2",
-      "default": "Pour les Mamans"
-    },
-    {
-      "type": "textarea",
-      "id": "benefit_text_2",
-      "label": "Texte Bénéfice 2",
-      "default": "Des produits conçus pour le bien-être et la sérénité des mères modernes et conscientes."
-    },
-    {
-      "type": "text",
-      "id": "benefit_icon_3",
-      "label": "Icône Bénéfice 3",
-      "default": "🌍"
-    },
-    {
-      "type": "text",
-      "id": "benefit_title_3",
-      "label": "Titre Bénéfice 3",
-      "default": "Responsable & Durable"
-    },
-    {
-      "type": "textarea",
-      "id": "benefit_text_3",
-      "label": "Texte Bénéfice 3",
-      "default": "Emballages éco-responsables et production éthique pour un avenir meilleur pour nos enfants."
-    }
-  ]
+  "name": "Pourquoi Choisir Ninolia"
 }
 {% endschema %}

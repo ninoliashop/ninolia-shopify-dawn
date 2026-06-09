@@ -39,12 +39,10 @@
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .cta-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   }
 
   .cta-btn-secondary {
@@ -68,10 +66,6 @@
       flex-direction: column;
     }
     
-    .cta-banner h2 {
-      font-size: 1.5rem;
-    }
-    
     .cta-btn-primary,
     .cta-btn-secondary {
       width: 100%;
@@ -81,14 +75,14 @@
 
 <section class="cta-banner">
   <div class="cta-banner-container">
-    <h2>{{ section.settings.title }}</h2>
-    <p>{{ section.settings.description }}</p>
+    <h2>Prêt à Découvrir Ninolia?</h2>
+    <p>Rejoignez des milliers de parents qui ont choisi Ninolia pour le bien-être de leur bébé.</p>
     <div class="cta-banner-buttons">
-      <button class="cta-btn-primary" onclick="window.location.href='{{ section.settings.primary_button_link }}'">
-        {{ section.settings.primary_button_text }}
+      <button class="cta-btn-primary" onclick="window.location.href='/collections/all'">
+        Acheter Maintenant
       </button>
-      <button class="cta-btn-secondary" onclick="window.location.href='{{ section.settings.secondary_button_link }}'">
-        {{ section.settings.secondary_button_text }}
+      <button class="cta-btn-secondary" onclick="window.location.href='/pages/about'">
+        En Savoir Plus
       </button>
     </div>
   </div>
@@ -96,42 +90,6 @@
 
 {% schema %}
 {
-  "name": "CTA Banner",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Prêt à Découvrir Ninolia?"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "Rejoignez des milliers de parents qui ont choisi Ninolia pour le bien-être de leur bébé."
-    },
-    {
-      "type": "text",
-      "id": "primary_button_text",
-      "label": "Texte Bouton Primaire",
-      "default": "Acheter Maintenant"
-    },
-    {
-      "type": "url",
-      "id": "primary_button_link",
-      "label": "Lien Bouton Primaire"
-    },
-    {
-      "type": "text",
-      "id": "secondary_button_text",
-      "label": "Texte Bouton Secondaire",
-      "default": "En Savoir Plus"
-    },
-    {
-      "type": "url",
-      "id": "secondary_button_link",
-      "label": "Lien Bouton Secondaire"
-    }
-  ]
+  "name": "CTA Banner"
 }
 {% endschema %}

@@ -58,54 +58,29 @@
 
   .newsletter-form button:hover {
     background-color: #B8714F;
-    transform: scale(1.02);
   }
 
   @media (max-width: 768px) {
     .newsletter-form {
       flex-direction: column;
     }
-    
-    .newsletter h2 {
-      font-size: 1.5rem;
-    }
   }
 {% endstylesheet %}
 
 <section class="newsletter">
   <div class="newsletter-container">
-    <h2>{{ section.settings.title }}</h2>
-    <p>{{ section.settings.subtitle }}</p>
+    <h2>Restez Informée des Nouveautés</h2>
+    <p>Inscrivez-vous à notre newsletter pour recevoir des conseils exclusifs et des offres réservées à nos abonnés.</p>
     
     <form class="newsletter-form" method="POST" action="/contact">
       <input type="email" name="email" placeholder="Votre email" required>
-      <button type="submit">{{ section.settings.button_text }}</button>
+      <button type="submit">S'abonner</button>
     </form>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Newsletter",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Restez Informée des Nouveautés"
-    },
-    {
-      "type": "textarea",
-      "id": "subtitle",
-      "label": "Sous-titre",
-      "default": "Inscrivez-vous à notre newsletter pour recevoir des conseils exclusifs et des offres réservées à nos abonnés."
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Texte du Bouton",
-      "default": "S'abonner"
-    }
-  ]
+  "name": "Newsletter"
 }
 {% endschema %}

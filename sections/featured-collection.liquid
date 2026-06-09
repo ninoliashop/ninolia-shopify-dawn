@@ -97,12 +97,12 @@
 
 <section class="featured-collection">
   <div class="collection-header">
-    <h2>{{ section.settings.title }}</h2>
-    <p>{{ section.settings.subtitle }}</p>
+    <h2>Nos Produits Stars</h2>
+    <p>Découvrez notre sélection de produits premium pour les bébés et les mamans</p>
   </div>
   
   <div class="products-grid">
-    {% for product in collections[section.settings.collection].products limit: 8 %}
+    {% for product in collections.featured.products limit: 8 %}
       <div class="product-card">
         <div class="product-image">
           {% if product.featured_image %}
@@ -120,25 +120,6 @@
 
 {% schema %}
 {
-  "name": "Collection Mise en Avant",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Nos Produits Stars"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Sous-titre",
-      "default": "Découvrez notre sélection de produits premium pour les bébés et les mamans"
-    },
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collection à Afficher"
-    }
-  ]
+  "name": "Collection Mise en Avant"
 }
 {% endschema %}
