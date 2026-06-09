@@ -1,0 +1,26 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dépendances
+node_modules/
+.npm
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.log
+
+# Fichiers d'éditeur
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Fichiers Shopify
+config.yml
+.shopify-cli
+
+# Dossiers
+.git/
+.env

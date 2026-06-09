@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Palette Ninolia",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Couleurs Premium Ninolia"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Couleur Primaire (Crème)",
+        "default": "#F7F3EE"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Couleur Secondaire (Beige)",
+        "default": "#DCCCB8"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Couleur Accent (Terracotta)",
+        "default": "#C98F75"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Couleur Texte (Gris Foncé)",
+        "default": "#2D2D2D"
+      },
+      {
+        "type": "color",
+        "id": "color_muted",
+        "label": "Couleur Muted (Gris)",
+        "default": "#6F6A63"
+      }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Paramètres de Typographie"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Police des Titres",
+        "default": "poppins_n6"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Police du Corps",
+        "default": "poppins_n4"
+      }
+    ]
+  }
+]

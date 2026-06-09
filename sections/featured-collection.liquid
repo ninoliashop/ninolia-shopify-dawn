@@ -1,0 +1,144 @@
+{% stylesheet %}
+  .featured-collection {
+    padding: 4rem 2rem;
+    background-color: #F7F3EE;
+  }
+
+  .collection-header {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+
+  .collection-header h2 {
+    font-size: 2.5rem;
+    color: #2D2D2D;
+    margin-bottom: 1rem;
+  }
+
+  .collection-header p {
+    font-size: 1.1rem;
+    color: #6F6A63;
+  }
+
+  .products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(45, 45, 45, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    box-shadow: 0 8px 24px rgba(45, 45, 45, 0.15);
+    transform: translateY(-8px);
+  }
+
+  .product-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background-color: #DCCCB8;
+  }
+
+  .product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2D2D2D;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+    color: #C98F75;
+    font-weight: 600;
+  }
+
+  @media (max-width: 1024px) {
+    .products-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .collection-header h2 {
+      font-size: 1.8rem;
+    }
+  }
+{% endstylesheet %}
+
+<section class="featured-collection">
+  <div class="collection-header">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+  </div>
+  
+  <div class="products-grid">
+    {% for product in collections[section.settings.collection].products limit: 8 %}
+      <div class="product-card">
+        <div class="product-image">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
+          {% endif %}
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">{{ product.title }}</h3>
+          <p class="product-price">{{ product.price | money }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Mise en Avant",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Nos Produits Stars"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Découvrez notre sélection de produits premium pour les bébés et les mamans"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection à Afficher"
+    }
+  ]
+}
+{% endschema %}

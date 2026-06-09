@@ -1,0 +1,186 @@
+{% stylesheet %}
+  .testimonials {
+    padding: 4rem 2rem;
+    background-color: white;
+  }
+
+  .testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .testimonials-header h2 {
+    font-size: 2.5rem;
+    color: #2D2D2D;
+    margin-bottom: 1rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background-color: #F7F3EE;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(45, 45, 45, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    box-shadow: 0 4px 16px rgba(45, 45, 45, 0.12);
+  }
+
+  .stars {
+    color: #C98F75;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: #6F6A63;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #DCCCB8;
+    overflow: hidden;
+  }
+
+  .author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .author-info h4 {
+    font-size: 0.9rem;
+    color: #2D2D2D;
+    margin-bottom: 2px;
+  }
+
+  .author-info p {
+    font-size: 0.8rem;
+    color: #6F6A63;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .testimonials-header h2 {
+      font-size: 1.8rem;
+    }
+  }
+{% endstylesheet %}
+
+<section class="testimonials">
+  <div class="testimonials-container">
+    <div class="testimonials-header">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      {% for i in (1..3) %}
+        <div class="testimonial-card">
+          <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+          <p class="testimonial-text">"{{ section.settings["testimonial_text_" | append: i] }}"</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <h4>{{ section.settings["author_name_" | append: i] }}</h4>
+              <p>{{ section.settings["author_title_" | append: i] }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Avis Clients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Ce que nos clients disent"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_text_1",
+      "label": "Témoignage 1",
+      "default": "Les produits Ninolia ont changé ma vie de maman. Qualité exceptionnelle et livraison rapide!"
+    },
+    {
+      "type": "text",
+      "id": "author_name_1",
+      "label": "Nom Auteur 1",
+      "default": "Sophie M."
+    },
+    {
+      "type": "text",
+      "id": "author_title_1",
+      "label": "Titre Auteur 1",
+      "default": "Maman de 2 enfants"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_text_2",
+      "label": "Témoignage 2",
+      "default": "Pédiatre recommandé! Mes patients adorent les produits Ninolia pour leur douceur et leur innocuité."
+    },
+    {
+      "type": "text",
+      "id": "author_name_2",
+      "label": "Nom Auteur 2",
+      "default": "Dr. Claire L."
+    },
+    {
+      "type": "text",
+      "id": "author_title_2",
+      "label": "Titre Auteur 2",
+      "default": "Pédiatre"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_text_3",
+      "label": "Témoignage 3",
+      "default": "Enfin une marque qui comprend vraiment les besoins des bébés. Merci Ninolia pour votre engagement!"
+    },
+    {
+      "type": "text",
+      "id": "author_name_3",
+      "label": "Nom Auteur 3",
+      "default": "Marie D."
+    },
+    {
+      "type": "text",
+      "id": "author_title_3",
+      "label": "Titre Auteur 3",
+      "default": "Maman"
+    }
+  ]
+}
+{% endschema %}

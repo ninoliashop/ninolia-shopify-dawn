@@ -1,0 +1,177 @@
+{% stylesheet %}
+  footer {
+    background-color: #2D2D2D;
+    color: white;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+    padding: 0 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .footer-column ul {
+    list-style: none;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 1rem;
+  }
+
+  .footer-column ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .footer-column ul li a:hover {
+    color: #C98F75;
+  }
+
+  .footer-about p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-links a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background-color: #C98F75;
+    color: white;
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+  }
+
+  .footer-bottom-links a:hover {
+    color: #C98F75;
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+    }
+    
+    .footer-bottom-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+{% endstylesheet %}
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column footer-about">
+      <h3>À Propos de Ninolia</h3>
+      <p>Ninolia est votre compagnon de confiance pour les produits premium destinés aux bébés et aux mamans.</p>
+      <div class="social-links">
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="Instagram">📷</a>
+        <a href="#" title="Pinterest">📌</a>
+      </div>
+    </div>
+    
+    <div class="footer-column">
+      <h3>Boutique</h3>
+      <ul>
+        <li><a href="/collections/all">Tous les Produits</a></li>
+        <li><a href="/collections/nouveautes">Nouveautés</a></li>
+        <li><a href="/collections/bestsellers">Best-sellers</a></li>
+        <li><a href="/collections/soldes">Soldes</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h3>Service Client</h3>
+      <ul>
+        <li><a href="/pages/contact">Nous Contacter</a></li>
+        <li><a href="/pages/faq">FAQ</a></li>
+        <li><a href="/pages/shipping">Livraison</a></li>
+        <li><a href="/pages/returns">Retours</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h3>Informations</h3>
+      <ul>
+        <li><a href="/pages/about">Qui Sommes-nous?</a></li>
+        <li><a href="/pages/privacy">Politique de Confidentialité</a></li>
+        <li><a href="/pages/terms">Conditions Générales</a></li>
+        <li><a href="/pages/cookies">Politique des Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2024 Ninolia. Tous droits réservés.</p>
+    <div class="footer-bottom-links">
+      <a href="/pages/privacy">Politique de Confidentialité</a>
+      <a href="/pages/terms">Conditions d'Utilisation</a>
+      <a href="/pages/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer"
+}
+{% endschema %}

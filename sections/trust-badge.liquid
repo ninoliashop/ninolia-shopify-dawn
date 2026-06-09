@@ -1,0 +1,150 @@
+{% stylesheet %}
+  .trust-badges {
+    background-color: white;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(220, 204, 184, 0.3);
+    border-bottom: 1px solid rgba(220, 204, 184, 0.3);
+  }
+
+  .trust-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .badge-icon {
+    width: 64px;
+    height: 64px;
+    background-color: #DCCCB8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .badge h3 {
+    font-size: 1rem;
+    color: #2D2D2D;
+  }
+
+  .badge p {
+    font-size: 0.9rem;
+    color: #6F6A63;
+  }
+
+  @media (max-width: 768px) {
+    .trust-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .badge-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+<section class="trust-badges">
+  <div class="trust-container">
+    {% for i in (1..4) %}
+      <div class="badge">
+        <div class="badge-icon">{{ section.settings["icon_" | append: i] }}</div>
+        <h3>{{ section.settings["badge_title_" | append: i] }}</h3>
+        <p>{{ section.settings["badge_text_" | append: i] }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bandeau de Confiance",
+  "settings": [
+    {
+      "type": "text",
+      "id": "icon_1",
+      "label": "Icône 1",
+      "default": "✓"
+    },
+    {
+      "type": "text",
+      "id": "badge_title_1",
+      "label": "Titre 1",
+      "default": "Produits Testés"
+    },
+    {
+      "type": "text",
+      "id": "badge_text_1",
+      "label": "Texte 1",
+      "default": "Testé et approuvé par des pédiatres"
+    },
+    {
+      "type": "text",
+      "id": "icon_2",
+      "label": "Icône 2",
+      "default": "🌿"
+    },
+    {
+      "type": "text",
+      "id": "badge_title_2",
+      "label": "Titre 2",
+      "default": "Bio & Naturel"
+    },
+    {
+      "type": "text",
+      "id": "badge_text_2",
+      "label": "Texte 2",
+      "default": "Matières premières certifiées organiques"
+    },
+    {
+      "type": "text",
+      "id": "icon_3",
+      "label": "Icône 3",
+      "default": "🚚"
+    },
+    {
+      "type": "text",
+      "id": "badge_title_3",
+      "label": "Titre 3",
+      "default": "Livraison Rapide"
+    },
+    {
+      "type": "text",
+      "id": "badge_text_3",
+      "label": "Texte 3",
+      "default": "Expédition en 24-48h"
+    },
+    {
+      "type": "text",
+      "id": "icon_4",
+      "label": "Icône 4",
+      "default": "❤️"
+    },
+    {
+      "type": "text",
+      "id": "badge_title_4",
+      "label": "Titre 4",
+      "default": "Satisfait ou Remboursé"
+    },
+    {
+      "type": "text",
+      "id": "badge_text_4",
+      "label": "Texte 4",
+      "default": "Garantie 30 jours sans questions"
+    }
+  ]
+}
+{% endschema %}

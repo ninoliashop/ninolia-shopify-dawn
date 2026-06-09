@@ -1,0 +1,157 @@
+{% stylesheet %}
+  .blog-section {
+    padding: 4rem 2rem;
+    background-color: #F7F3EE;
+  }
+
+  .blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .blog-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .blog-header h2 {
+    font-size: 2.5rem;
+    color: #2D2D2D;
+    margin-bottom: 1rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .blog-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(45, 45, 45, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .blog-card:hover {
+    box-shadow: 0 8px 24px rgba(45, 45, 45, 0.15);
+    transform: translateY(-8px);
+  }
+
+  .blog-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: #DCCCB8;
+  }
+
+  .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .blog-card:hover .blog-image img {
+    transform: scale(1.05);
+  }
+
+  .blog-content {
+    padding: 1.5rem;
+  }
+
+  .blog-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #C98F75;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .blog-title {
+    font-size: 1.1rem;
+    color: #2D2D2D;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .blog-excerpt {
+    font-size: 0.9rem;
+    color: #6F6A63;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-link {
+    color: #C98F75;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .blog-link:hover {
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .blog-header h2 {
+      font-size: 1.8rem;
+    }
+  }
+{% endstylesheet %}
+
+<section class="blog-section">
+  <div class="blog-container">
+    <div class="blog-header">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    
+    <div class="blog-grid">
+      {% for article in blogs[section.settings.blog].articles limit: 3 %}
+        <div class="blog-card">
+          {% if article.image %}
+            <div class="blog-image">
+              <img src="{{ article.image | image_url: width: 400 }}" alt="{{ article.title }}" />
+            </div>
+          {% endif %}
+          <div class="blog-content">
+            <span class="blog-category">Conseils</span>
+            <h3 class="blog-title">{{ article.title }}</h3>
+            <p class="blog-excerpt">{{ article.excerpt | strip_html | truncatewords: 15 }}</p>
+            <a href="{{ article.url }}" class="blog-link">
+              Lire la suite →
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog Conseils Parents",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Conseils & Astuces pour Parents"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog à Afficher"
+    }
+  ]
+}
+{% endschema %}
